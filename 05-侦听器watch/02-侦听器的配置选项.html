@@ -31,12 +31,11 @@
                 // info(newValue, oldValue) {
                 //     console.log('新值：', newValue, '旧值：', oldValue);
                 // }
-                // 深度侦听
                 info:{
                     handler:function(newValue, oldValue){
                         console.log('新值：', newValue, '旧值：', oldValue);
                     },
-                    deep:true,
+                    deep:true,// 深度侦听
                     immediate:true,//立即执行
                 }
             },
