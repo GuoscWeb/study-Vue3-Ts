@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <template id="my-app">
+        <!-- 1.基础用法,展示data中的值 -->
+        <div>{{message}}</div>
+        <!-- 2.表达式 -->
+        <div>{{num*10}}</div>
+        <div>{{message.split(' ').reverse().join(' ')}}</div>
+        <!-- 3.函数 -->
+        <div>{{getReverse()}}</div>
+        <!-- 4.三元运算 -->
+        <button @click="toggle">三元运算</button>
+        <div>{{flag ? '哈哈哈' : '嘿嘿嘿'}}</div>
+
+        <!-- 错误用法 -->
+        <!-- <div>{{let a = 1}}</div> 不能写赋值语句 -->
+        <!-- <div>{{ if(true) {to do ...} }}</div> 不能写判断语句 -->
+    </template>
+    <script src="../js/vue.js"></script>
+    <script>
+        const App = {
+            template: "#my-app",
+            data() {
+                return {
+                    message: 'hello world',
+                    num:10,
+                    flag:true
+                }
+            },
+            methods: {
+                getReverse() {
+                   return this.message.split(' ').reverse().join(' ')
+                },
+                toggle() {
+                   this.flag = !this.flag
+                },
+            }
+        }
+        Vue.createApp(App).mount("#app")
+    </script>
+</body>
+
+</html>

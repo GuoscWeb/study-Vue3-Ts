@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <template id="my-app">
+        <input :value="message">
+        <h2 v-bind:style="style">绑定样式</h2>
+        <img :src="image" alt="">
+        <a :href="url">百度一下</a>
+    </template>
+    <script src="../js/vue.js"></script>
+    <script>
+        const App = {
+            template: "#my-app",
+            data() {
+                return {
+                    message: 'hello',
+                    style:'color:red;fontSize:36px',
+                    image:'https://www.baidu.com/img/PC_880906d2a4ad95f5fafb2e540c5cdad7.png',
+                    url:'https://www.baidu.com/',
+                }
+            }
+        }
+        Vue.createApp(App).mount("#app")
+    </script>
+</body>
+
+</html>

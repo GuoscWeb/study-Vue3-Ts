@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <template id="my-app">
+    <ul>
+      <div v-for="(value,key) in obj">
+        <li>{{key}}</li>
+        <li>{{value}}</li>
+        <hr>
+        </hr>
+      </div>
+      <!-- template 包裹时节点不会渲染 不支持和v-show一起使用 类似小程序的block -->
+      <template v-for="(value,key) in obj">
+        <li>{{key}}</li>
+        <li>{{value}}</li>
+        <hr>
+        </hr>
+      </template>
+    </ul>
+  </template>
+  <script src="../js/vue.js"></script>
+  <script>
+    const App = {
+      template: "#my-app",
+      data() {
+        return {
+          obj: {
+            name: 'gsc',
+            height: '180',
+            age: 18
+          }
+        }
+      }
+    }
+    Vue.createApp(App).mount("#app")
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <template id="my-app">
+    <!-- 遍历数组 -->
+    <div v-for="(item,index) in 10">{{item}}</div>
+    <!-- 遍历对象 -->
+    <div v-for="(value,key,index) in obj">{{key-value}}</div>
+  </template>
+  <script src="../js/vue.js"></script>
+  <script>
+    const App = {
+      template: "#my-app",
+      data() {
+        return {
+          obj: {
+            name:'gsc',
+            height:'180',
+            age:18
+          }
+        }
+      }
+    }
+    Vue.createApp(App).mount("#app")
+  </script>
+</body>
+
+</html>
