@@ -1,55 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="app"></div>
     <template id="my-app">
-        <h2>{{info.name}}</h2>
-        <button @click="changeInfo">改变数据本身</button>
-        <button @click="changeInfoName">改变数据内部</button>
+      <h2>{{info.name}}</h2>
+      <button @click="changeInfo">改变数据本身</button>
+      <button @click="changeInfoName">改变数据内部</button>
     </template>
     <script src="../js/vue.js"></script>
     <script>
-        const App = {
-            template: "#my-app",
-            data() {
-                return {
-                    info: {
-                        name: 'coder',
-                        age: 18
-                    }
-                }
+      const App = {
+        template: '#my-app',
+        data() {
+          return {
+            info: {
+              name: 'coder',
+              age: 18
+            }
+          }
+        },
+        watch: {
+          //1.可以直接写函数
+          info(newValue, oldValue) {
+            console.log('新值：', newValue, '旧值：', oldValue)
+          },
+          //2.也可以写对象
+          info: {
+            handler: function (newValue, oldValue) {
+              console.log('新值：', newValue, '旧值：', oldValue)
             },
-            watch: {
-                // info(newValue, oldValue) {
-                //     console.log('新值：', newValue, '旧值：', oldValue);
-                // }
-                info:{
-                    handler:function(newValue, oldValue){
-                        console.log('新值：', newValue, '旧值：', oldValue);
-                    },
-                    deep:true,// 深度侦听
-                    immediate:true,//立即执行
-                }
-            },
-            methods: {
-                changeInfo() {
-                    this.info = { name: 'gsc' }
-                },
-                changeInfoName() {
-                    this.info.name = 'gsc'
-                }
-            },
+            deep: true, // 深度侦听
+            immediate: true //立即执行
+          },
+          //3.使用这种方式可以监听对象的属性
+          'info.name': function (newValue, oldValue) {
+            console.log('新值：', newValue, '旧值：', oldValue)
+          }
+        },
+        //3.在生命周期函数中通过this.$watch来监听数据，同时含返回值，以此可以控制监听的开关,不能有deep
+        created() {
+          const unwatch = this.$watch('info', function (newValue, oldValue) {
+            console.log('$watch新值：', newValue, '$watch旧值：', oldValue)
+          })
+          unwatch() //打开注释后取消监听
+        },
+        methods: {
+          changeInfo() {
+            this.info = {
+              name: 'gsc'
+            }
+          },
+          changeInfoName() {
+            this.info.name = 'gsc'
+          }
         }
-        Vue.createApp(App).mount("#app")
+      }
+      Vue.createApp(App).mount('#app')
     </script>
-</body>
-
+  </body>
 </html>

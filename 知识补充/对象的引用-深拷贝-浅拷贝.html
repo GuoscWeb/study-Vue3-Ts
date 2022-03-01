@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 对象的引用赋值 -->
+    <script>
+      // // 对象是应用类型,此时内存中存储的是{name:'gsc',age:18}这个对象并生成一个内存地址0x100，相当于info = 0x100
+      // let info = { name: 'gsc', age: 18 }
+      // console.log(info.name)
+      // //此时将info赋值给obj 相当于将内存地址0x100赋值给obj，当修改obj.name时，info.name会发生修改
+      // let obj = info
+      // obj.name = 'coder'
+      // console.log(obj.name)
+      // console.log(info.name)
+    </script>
+    <!-- 2.浅拷贝 -->
+    <script>
+      // 浅拷贝 ： 对象赋值后 修改对象属性值不会影响旧对象，前提是对象属性都是值类型，
+      // 若对象的属性为引用类型，使用assign赋值时，会在内存中创建一个新的内存地址指向属性名
+      let info = { name: 'gsc', age: 18, friends: { name: 'curry', age: '3' } }
+      let obj = Object.assign({}, info)
+      obj.name = 'coder'
+      console.log(info.name)
+      obj.friends.name = 'james'
+      console.log(info.friends.name)
+    </script>
+  </body>
+</html>
