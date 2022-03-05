@@ -1,1 +1,0 @@
-(()=>{var r={466:r=>{r.exports={formatDecimal:(r,t)=>{let o=(r=r.toString()).indexOf(".");return-1!=o?r.substring(0,t+o+1):r.substring(0)}}}},t={};function o(e){var s=t[e];if(void 0!==s)return s.exports;var n=t[e]={exports:{}};return r[e](n,n.exports,o),n.exports}(()=>{"use strict";const{formatDecimal:r}=o(466);console.log(3),console.log(r(999.456789,2))})()})();
